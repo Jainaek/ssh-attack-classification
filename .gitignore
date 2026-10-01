@@ -1,0 +1,11 @@
+*.csv
+*.sqlite
+*.db
+*.log
+alerts.json
+*_subset.json
+recovered_data.json
+.env
+__pycache__/
+.venv/
+venv/

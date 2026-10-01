@@ -1,0 +1,60 @@
+<group name="cowrie,">
+
+  <!-- Base decoder rule -->
+  <rule id="110100" level="0">
+    <decoded_as>cowrie-brute-force</decoded_as>
+    <description>Cowrie honeypot brute force classification</description>
+  </rule>
+
+  <!-- BOT rules -->
+  <rule id="110101" level="8">
+    <if_sid>110100</if_sid>
+    <field name="severity">BOT_LOW</field>
+    <description>AUTOMATED BOT Brute Force - Low Intensity from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,bot_brute_force,attack</group>
+  </rule>
+
+  <rule id="110103" level="11">
+    <if_sid>110100</if_sid>
+    <field name="severity">BOT_MEDIUM</field>
+    <description>AUTOMATED BOT Brute Force - Medium Intensity from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,bot_brute_force,attack</group>
+  </rule>
+
+  <rule id="110104" level="13">
+    <if_sid>110100</if_sid>
+    <field name="severity">BOT_HIGH</field>
+    <description>AUTOMATED BOT Brute Force - High Intensity from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,bot_brute_force,attack</group>
+  </rule>
+
+  <rule id="110105" level="15">
+    <if_sid>110100</if_sid>
+    <field name="severity">BOT_CRITICAL</field>
+    <description>AUTOMATED BOT Brute Force - CRITICAL Intensity from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,bot_brute_force,attack,high_severity</group>
+  </rule>
+
+  <!-- HUMAN rules -->
+  <rule id="110102" level="10">
+    <if_sid>110100</if_sid>
+    <field name="severity">HUMAN_LOW</field>
+    <description>HUMAN-OPERATED Brute Force - Low Intensity from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,human_brute_force,attack</group>
+  </rule>
+
+  <rule id="110106" level="13">
+    <if_sid>110100</if_sid>
+    <field name="severity">HUMAN_HIGH</field>
+    <description>HUMAN-OPERATED Brute Force - High Intensity from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,human_brute_force,attack,high_severity</group>
+  </rule>
+
+  <rule id="110107" level="15">
+    <if_sid>110100</if_sid>
+    <field name="severity">HUMAN_CRITICAL</field>
+    <description>HUMAN-OPERATED Brute Force - CRITICAL from $(src_ip)</description>
+    <group>cowrie,brute_force,honeypot,human_brute_force,attack,high_severity</group>
+  </rule>
+
+</group>

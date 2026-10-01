@@ -1,0 +1,21 @@
+<decoder name="cowrie">
+  <prematch>^COWRIE: </prematch>
+</decoder>
+
+<decoder name="cowrie_json">
+  <parent>cowrie</parent>
+  <regex>\"classification\":\"(\w+)\"</regex>
+  <order>classification</order>
+</decoder>
+
+<decoder name="cowrie_json">
+  <parent>cowrie</parent>
+  <regex>\"dominant_attack_type\":\"([\w ]+)\"</regex>
+  <order>dominant_attack_type</order>
+</decoder>
+
+<decoder name="cowrie_json">
+  <parent>cowrie</parent>
+  <regex>\"severity\":\"(\w+)\"</regex>
+  <order>severity</order>
+</decoder>

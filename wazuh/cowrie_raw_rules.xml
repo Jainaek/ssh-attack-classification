@@ -1,0 +1,30 @@
+<group name="cowrie_raw,">
+
+  <rule id="110200" level="5">
+    <decoded_as>cowrie-raw</decoded_as>
+    <description>Cowrie Raw: Attacker command executed on honeypot</description>
+    <group>cowrie,honeypot,attack</group>
+  </rule>
+
+  <rule id="110201" level="6">
+    <if_sid>110200</if_sid>
+    <match>"severity": "LOW"</match>
+    <description>Cowrie Raw: Low risk command on honeypot from $(src_ip)</description>
+    <group>cowrie,honeypot,attack,low_severity</group>
+  </rule>
+
+  <rule id="110202" level="9">
+    <if_sid>110200</if_sid>
+    <match>"severity": "MEDIUM"</match>
+    <description>Cowrie Raw: Medium risk command on honeypot from $(src_ip)</description>
+    <group>cowrie,honeypot,attack,medium_severity</group>
+  </rule>
+
+  <rule id="110203" level="12">
+    <if_sid>110200</if_sid>
+    <match>"severity": "HIGH"</match>
+    <description>Cowrie Raw: HIGH RISK command on honeypot from $(src_ip)</description>
+    <group>cowrie,honeypot,attack,high_severity</group>
+  </rule>
+
+</group>

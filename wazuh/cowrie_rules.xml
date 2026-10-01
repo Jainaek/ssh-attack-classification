@@ -1,0 +1,35 @@
+<group name="cowrie,brute_force,honeypot">
+
+  <rule id="100100" level="10">
+    <decoded_as>cowrie-brute-force</decoded_as>
+    <description>Cowrie Honeypot: Brute force attack classified by ML model</description>
+    <options>no_full_log</options>
+    <group>cowrie_brute_force</group>
+  </rule>
+
+  <rule id="100101" level="12">
+    <if_sid>100100</if_sid>
+    <field name="classification">BOT</field>
+    <description>AUTOMATED BOT Brute Force from $(src_ip)</description>
+    <options>no_full_log</options>
+    <group>cowrie_bot_brute_force,attack</group>
+  </rule>
+
+  <rule id="100102" level="14">
+    <if_sid>100100</if_sid>
+    <field name="classification">HUMAN</field>
+    <description>HUMAN-OPERATED Brute Force from $(src_ip)</description>
+    <options>no_full_log</options>
+    <group>cowrie_human_brute_force,attack,high_severity</group>
+  </rule>
+
+</group>
+```
+
+---
+
+## Step 2: Set up a Shared Folder in VirtualBox
+
+**Shut down your VM**, then:
+```
+Right-click VM → Settings → Shared Folders → click the + icon on the right

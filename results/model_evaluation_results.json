@@ -1,0 +1,42 @@
+{
+  "training_ips": 2789,
+  "test_ips": 1811,
+  "test_events": 524184,
+  "classification_report": {
+    "HUMAN": {
+      "precision": 1.0,
+      "recall": 0.3498201438848921,
+      "f1-score": 0.5183211192538307,
+      "support": 1112.0
+    },
+    "BOT": {
+      "precision": 0.49156118143459915,
+      "recall": 1.0,
+      "f1-score": 0.6591230551626591,
+      "support": 699.0
+    },
+    "accuracy": 0.6007730535615682,
+    "macro avg": {
+      "precision": 0.7457805907172996,
+      "recall": 0.674910071942446,
+      "f1-score": 0.5887220872082449,
+      "support": 1811.0
+    },
+    "weighted avg": {
+      "precision": 0.803755530548197,
+      "recall": 0.6007730535615682,
+      "f1-score": 0.5726670900988176,
+      "support": 1811.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      389,
+      723
+    ],
+    [
+      0,
+      699
+    ]
+  ]
+}

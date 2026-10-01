@@ -1,0 +1,42 @@
+{
+  "total_ips": 2789,
+  "train_size": 2231,
+  "test_size": 558,
+  "classification_report": {
+    "HUMAN": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 349.0
+    },
+    "BOT": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 209.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 558.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 558.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      349,
+      0
+    ],
+    [
+      0,
+      209
+    ]
+  ]
+}

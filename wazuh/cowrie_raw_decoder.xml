@@ -1,0 +1,9 @@
+<decoder name="cowrie-raw">
+  <prematch>^COWRIE_RAW: </prematch>
+</decoder>
+
+<decoder name="cowrie-raw-fields">
+  <parent>cowrie-raw</parent>
+  <regex>"src_ip": "(\S+)"\.+"command": "([^"]+)"\.+"severity": "(\w+)"</regex>
+  <order>src_ip,extra_data,status</order>
+</decoder>
