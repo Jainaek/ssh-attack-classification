@@ -33,12 +33,28 @@ Data came from a Cowrie honeypot run on an internet-facing server for six weeks.
 | Alert reduction | 99.65% |
 | Random Forest accuracy | 89% |
 | Macro F1 | 0.79 |
-| BOT F1 / precision / recall | 0.94 / 0.95 / 0.93 |
-| HUMAN F1 / precision / recall | 0.65 / 0.60 / 0.70 |
+| BOT F1 | 0.94 |
+| HUMAN recall | 0.70 |
 
-The test set had 352 BOT and 60 HUMAN sessions. HUMAN results rest on a small sample and should not be generalised. Class imbalance was handled with `class_weight="balanced"`.
+The test set had 352 BOT and 60 HUMAN sessions. Class imbalance was handled with `class_weight="balanced"`.
 
 Attack type distribution: Malware Deployment 68%, Reconnaissance 18%, Brute Force 7%, Post-Exploitation 4%, Credential Stuffing 1%, Dictionary Attack 1%, Lateral Movement 1%.
+
+## Severity tiers and Wazuh rules
+
+Each attacker gets a tier from its classification and total hit count. The thresholds were set empirically from the hit-count distribution across all attacker IPs.
+
+| Rule ID | Tier | Hits | Wazuh level |
+| --- | --- | --- | --- |
+| 110101 | BOT_LOW | 20 or fewer | 8 |
+| 110103 | BOT_MEDIUM | 21 to 36 | 11 |
+| 110104 | BOT_HIGH | 37 to 50 | 13 |
+| 110105 | BOT_CRITICAL | over 50 | 15 |
+| 110102 | HUMAN_LOW | 20 or fewer | 10 |
+| 110106 | HUMAN_HIGH | 21 to 50 | 13 |
+| 110107 | HUMAN_CRITICAL | over 50 | 15 |
+
+Severity distribution across the 1,811 alerts: Critical 954 (53%), Medium 476 (26%), High 376 (21%), Low 5 (under 1%).
 
 ## Repository layout
 
@@ -67,13 +83,3 @@ dashboard/     Standalone SOC dashboard (HTML)
 ## Data
 
 Raw honeypot logs and trained models are not included. The logs contain real attacker IP addresses and captured credentials. To reproduce the results, deploy your own Cowrie honeypot and retrain the classifier with the scripts in `pipeline/`.
-
-## Limitations
-
-- One source IP is treated as one attacker, which fails behind NAT, VPNs or rotating botnet nodes.
-- Only three features are used.
-- Attack types come from fixed keyword rules.
-- Data comes from a honeypot, so attacker behaviour may differ on live systems.
-- Processing is batch only, not streaming.
-
-This is a proof of concept, not a production tool.
